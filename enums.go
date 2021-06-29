@@ -610,3 +610,50 @@ func (e *IdentificationDocType) UnmarshalGQL(v interface{}) error {
 func (e IdentificationDocType) MarshalGQL(w io.Writer) {
 	fmt.Fprint(w, strconv.Quote(e.String()))
 }
+
+// SenderID defines the various AT Sender IDs that we have and can use
+type SenderID string
+
+// SenderIDSLADE360 is an example of a sender ID
+const (
+	SenderIDSLADE360 SenderID = "SLADE360"
+	SenderIDBewell   SenderID = "BEWELL"
+)
+
+// AllSenderID defines a list of the sender IDs
+var AllSenderID = []SenderID{
+	SenderIDSLADE360,
+	SenderIDBewell,
+}
+
+// IsValid checks if a Sender ID is valid
+func (e SenderID) IsValid() bool {
+	switch e {
+	case SenderIDSLADE360, SenderIDBewell:
+		return true
+	}
+	return false
+}
+
+func (e SenderID) String() string {
+	return string(e)
+}
+
+// UnmarshalGQL converts the input, if valid, into a Sender ID value
+func (e *SenderID) UnmarshalGQL(v interface{}) error {
+	str, ok := v.(string)
+	if !ok {
+		return fmt.Errorf("enums must be strings")
+	}
+
+	*e = SenderID(str)
+	if !e.IsValid() {
+		return fmt.Errorf("%s is not a valid SenderID", str)
+	}
+	return nil
+}
+
+// MarshalGQL converts SenderID into a valid JSON string
+func (e SenderID) MarshalGQL(w io.Writer) {
+	fmt.Fprint(w, strconv.Quote(e.String()))
+}

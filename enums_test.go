@@ -1124,3 +1124,29 @@ func TestIdentificationDocType_MarshalGQL(t *testing.T) {
 		})
 	}
 }
+
+func TestSenderID_String(t *testing.T) {
+	tests := []struct {
+		name string
+		e    enumutils.SenderID
+		want string
+	}{
+		{
+			name: "SenderIDSLADE360",
+			e:    enumutils.SenderIDSLADE360,
+			want: "SLADE360",
+		},
+		{
+			name: "SenderIDBewell",
+			e:    enumutils.SenderIDBewell,
+			want: "BEWELL",
+		},
+	}
+	for _, test := range tests {
+		t.Run(test.name, func(t *testing.T) {
+			if got := test.e.String(); got != test.want {
+				t.Errorf("String() = %v, want %v", got, test.want)
+			}
+		})
+	}
+}
