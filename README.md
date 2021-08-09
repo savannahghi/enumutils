@@ -1,3 +1,6 @@
+![Linting and Tests](https://github.com/savannahghi/enumutils/actions/workflows/ci.yml/badge.svg)
+[![Coverage Status](https://coveralls.io/repos/github/savannahghi/enumutils/badge.svg?branch=main)](https://coveralls.io/github/savannahghi/enumutils?branch=main)
+
 # Enum Utils Library
 enumutils are utilities used by several backend services. These includes various method implementations
 
