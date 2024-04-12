@@ -36,6 +36,36 @@ func TestGender_String(t *testing.T) {
 			e:    enumutils.GenderOther,
 			want: "other",
 		},
+		{
+			name: "nonbinary",
+			e: enumutils.GenderNonBinary,
+			want: "nonbinary",
+		},
+		{
+			name: "genderqueer",
+			e: enumutils.GenderGenderQueer,
+			want : "genderqueer",
+		},
+		{
+			name: "transgender",
+			e: enumutils.GenderTransGender,
+			want : "transgender",
+		},
+		{
+			name: "agender",
+			e: enumutils.GenderAgender,
+			want : "agender",
+		},
+		{
+			name: "bigender",
+			e: enumutils.GenderBigender,
+			want : "bigender",
+		},
+		{
+			name: "twospirit",
+			e: enumutils.GenderTwoSpirit,
+			want : "twospirit",
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
