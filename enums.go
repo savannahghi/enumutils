@@ -17,6 +17,12 @@ const (
 	GenderFemale  Gender = "female"
 	GenderOther   Gender = "other"
 	GenderUnknown Gender = "unknown"
+	GenderNonBinary Gender = "nonbinary"
+	GenderGenderQueer Gender = "genderqueer"
+	GenderTransGender Gender = "transgender"
+	GenderAgender Gender = "agender"
+	GenderBigender Gender = "bigender"
+	GenderTwoSpirit Gender = "twospirit"
 )
 
 // AllGender is a list of known genders
