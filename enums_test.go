@@ -1185,3 +1185,34 @@ func TestSenderID_String(t *testing.T) {
 		})
 	}
 }
+
+func TestGender_ToAdvantageGender(t *testing.T) {
+	tests := []struct {
+		name string
+		e    enumutils.Gender
+		want string
+	}{
+		{
+			name: "Happy case: convert `male` to `MALE`",
+			e:    enumutils.GenderMale,
+			want: "MALE",
+		},
+		{
+			name: "Happy case: convert `female` to `FEMALE`",
+			e:    enumutils.GenderFemale,
+			want: "FEMALE",
+		},
+		{
+			name: "Happy case: return other genders",
+			e:    enumutils.GenderOther,
+			want: "OTHER",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := tt.e.ToAdvantageGender(); got != tt.want {
+				t.Errorf("Gender.ToAdvantageGender() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}

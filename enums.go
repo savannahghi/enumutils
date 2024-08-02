@@ -55,6 +55,19 @@ func (e Gender) String() string {
 	return string(e)
 }
 
+// ToAdvantageGender converts the `male` and `female` genders to `MALE` and `FEMALE` respectively.
+// This is used in support of advantage wrapper service and also ensure consistency of known gender types in go services.
+func (e Gender) ToAdvantageGender() string {
+	switch e {
+	case GenderMale:
+		return "MALE"
+	case GenderFemale:
+		return "FEMALE"
+	default:
+		return "OTHER"
+	}
+}
+
 // UnmarshalGQL translates from the supplied value to a valid enum value
 func (e *Gender) UnmarshalGQL(v interface{}) error {
 	str, ok := v.(string)
